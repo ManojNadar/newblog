@@ -226,15 +226,22 @@ const SingleBlog = () => {
                 </div>
 
                 <div className="commentsHeading">
-                  <h5>Comments</h5>
-                  <div className="comments">
-                    {singleBlog?.comments?.map((comment) => (
-                      <div key={comment.commentId}>
-                        <h6>Name : {comment.name.toUpperCase()}</h6>
-                        <p>comment : {comment.comment}</p>
+                  {singleBlog?.comments?.length ? (
+                    <div>
+                      <h5>Comments</h5>
+
+                      <div className="comments">
+                        {singleBlog?.comments?.map((comment) => (
+                          <div key={comment.commentId}>
+                            <h6>Name : {comment.name.toUpperCase()}</h6>
+                            <p>comment : {comment.comment}</p>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ) : (
+                    <div>No Comments Yet</div>
+                  )}
                 </div>
               </div>
             ) : (
