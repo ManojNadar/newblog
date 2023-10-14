@@ -15,6 +15,9 @@ const SingleBlog = () => {
   const [editModal, setEditModal] = useState(false);
   const { id } = useParams();
   const [comment, setComment] = useState("");
+
+  const [likeColor, setLikeColor] = useState();
+  const [bookMarkColor, setBookMarkColor] = useState();
   const { state } = useContext(MyContext);
   const route = useNavigate();
 
@@ -120,6 +123,7 @@ const SingleBlog = () => {
       const response = await api.post("/addlike", { token, id });
 
       if (response.data.success) {
+        setLikeColor(response.data.isLiked);
         toast.success(response.data.message);
       } else {
         toast.error(response.data.message);
@@ -137,6 +141,7 @@ const SingleBlog = () => {
 
       if (response.data.success) {
         toast.success(response.data.message);
+        setBookMarkColor(response.data.isBookmarked);
       } else {
         toast.error(response.data.message);
       }
@@ -220,10 +225,26 @@ const SingleBlog = () => {
             {state?.currentuser?.role === "User" && (
               <div className="heartSaveIcons">
                 <div className="heart" onClick={() => likeBlog(singleBlog._id)}>
-                  <AiFillHeart />
+                  {likeColor ? (
+                    <div style={{ color: "red" }}>
+                      <AiFillHeart />
+                    </div>
+                  ) : (
+                    <div style={{ color: "white" }}>
+                      <AiFillHeart />
+                    </div>
+                  )}
                 </div>
                 <div className="save" onClick={() => bookmarks(singleBlog._id)}>
-                  <BsFillBookmarkFill />
+                  {bookMarkColor ? (
+                    <div style={{ color: "blue" }}>
+                      <BsFillBookmarkFill />
+                    </div>
+                  ) : (
+                    <div>
+                      <BsFillBookmarkFill />
+                    </div>
+                  )}
                 </div>
               </div>
             )}

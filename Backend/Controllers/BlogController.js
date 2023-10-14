@@ -85,7 +85,7 @@ export const singleBlog = async (req, res) => {
     }
 
     const findBlog = await Blog.findById(id);
-    console.log(findBlog);
+    // console.log(findBlog);
 
     if (findBlog) {
       return res.status(200).json({

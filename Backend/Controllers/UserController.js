@@ -185,6 +185,7 @@ export const like = async (req, res) => {
           return res.status(200).json({
             success: true,
             message: "Liked",
+            isLiked: true,
           });
         }
 
@@ -195,6 +196,7 @@ export const like = async (req, res) => {
         return res.status(200).json({
           success: true,
           message: "UnLiked",
+          isLiked: false,
         });
       }
     }
@@ -251,6 +253,7 @@ export const bookmarks = async (req, res) => {
           return res.status(200).json({
             success: true,
             message: "Saved",
+            isBookmarked: true,
           });
         }
 
@@ -258,9 +261,11 @@ export const bookmarks = async (req, res) => {
 
         user.bookmarks = filterBlogUser;
         await user.save();
+
         return res.status(200).json({
           success: false,
           message: "Removed from Bookmark",
+          isBookmarked: false,
         });
       }
     }
