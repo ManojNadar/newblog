@@ -1,0 +1,140 @@
+.allBlogsContainer {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-image: url("https://images.unsplash.com/photo-1477346611705-65d1883cee1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+}
+
+.allBlogsMainSection {
+  width: 100%;
+  height: 100%;
+  /* display: flex;
+    justify-content: center;
+    align-items: center; */
+  font-size: 2em;
+  color: white;
+}
+
+.topRight {
+  width: 100%;
+  height: 10%;
+  /* background-color: white; */
+  display: flex;
+  justify-content: end;
+}
+
+.searchBlogIcon {
+  position: absolute;
+  top: 25%;
+  right: 12%;
+  font-size: 0.7em;
+}
+
+.topSearchInput {
+  position: relative;
+}
+.topRight > div {
+  /* border: 1px solid red; */
+  width: 25%;
+}
+.topRight > div > input {
+  width: 90%;
+  height: 45%;
+  border: 1px solid white;
+  outline: none;
+  padding-left: 2%;
+  background-color: transparent;
+  color: white;
+}
+.topRight > div > input::placeholder {
+  color: white;
+  letter-spacing: 1px;
+}
+.topRight > div > select {
+  width: 90%;
+  height: 45%;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  padding-left: 2%;
+}
+.topRight > div > select > option {
+  background-color: #713445;
+  border: none;
+}
+
+.mainBlogSections {
+  /* border: 1px solid red; */
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: scroll;
+  gap: 1.8em 0;
+  padding-bottom: 1%;
+}
+
+.singleBlogSection {
+  /* border: 1px solid blue; */
+  width: 25%;
+  height: 92%;
+  margin-left: 7%;
+  margin-top: 1%;
+  box-shadow: -1px 1px 10px #3a4b60;
+}
+
+.singleBlogImage {
+  width: 100%;
+  height: 55%;
+  position: relative;
+  /* border: 1px solid red; */
+  cursor: pointer;
+}
+.singleBlogImage > img {
+  width: 100%;
+  height: 100%;
+  /* border: 1px solid red; */
+}
+
+.innerImage {
+  position: absolute;
+  bottom: 2%;
+  font-size: 0.5em;
+  left: 5%;
+  background-color: #fe0048;
+  padding: 0 2%;
+}
+
+.time {
+  text-align: center;
+  font-size: 0.5em;
+}
+
+.description {
+  text-align: left;
+  font-size: 0.65em;
+  margin-top: 5%;
+  padding: 0 3%;
+}
+.singleBlogDetails > h5 {
+  text-align: center;
+  margin-top: 2%;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.noBlogs {
+  display: flex;
+  justify-content: center;
+  margin-top: 10%;
+}

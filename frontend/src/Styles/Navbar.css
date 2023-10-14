@@ -1,0 +1,52 @@
+.leftNav {
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 5%;
+  height: 100%;
+  color: white;
+  text-align: center;
+  padding-top: 1%;
+  z-index: 9999;
+}
+.leftNav > h1 {
+  cursor: pointer;
+}
+
+.dropSideNav {
+  width: 22%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 5%;
+  background-color: red;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+}
+.innerDropDownContainer {
+  width: 90%;
+  height: 80%;
+  /* border: 1px solid red; */
+  margin: 0 auto;
+  color: aqua;
+}
+
+.innerDropDownContainer > h2 {
+  text-align: center;
+  margin: 12% 0;
+  letter-spacing: 1.5px;
+}
+.innerDropDownContainer > h2:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  text-decoration-color: aqua;
+  color: white;
+}
+
+.logout {
+  color: yellow;
+  letter-spacing: 5px;
+  text-align: center;
+  cursor: pointer;
+}

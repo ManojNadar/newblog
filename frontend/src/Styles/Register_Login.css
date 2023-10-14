@@ -1,0 +1,165 @@
+.registerBackground {
+  background-image: url("https://images.unsplash.com/photo-1507237615867-0d4d2ad6b2d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.regContainer {
+  width: 60%;
+  height: 80%;
+  opacity: 0.85;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: saturate(180%) blur(2px);
+  /* border: 1px solid red; */
+}
+
+.active {
+  background-color: #5d8285;
+}
+
+.loginRegNavLink {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 5px solid #6ca8ad;
+}
+.loginRegNavLink > a {
+  width: 50%;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  font-size: 1.7em;
+  /* border: 1px solid black; */
+  /* padding-bottom: 1%; */
+}
+.loginRegNavLink > a:hover {
+  cursor: pointer;
+  background-color: #6ca8ad;
+  color: black;
+}
+
+.mainOutletContainer {
+  width: 60%;
+  height: 85%;
+  margin: 1.3% auto;
+  /* border: 2px solid red; */
+  background-color: black;
+  border-radius: 15px;
+}
+
+.regForm {
+  width: 85%;
+  margin: 0 auto;
+  /* border: 1px solid blue; */
+  background-color: black;
+}
+
+.allInputs {
+  width: 100%;
+}
+.allInputs > input {
+  width: 100%;
+  margin: 5% 0;
+  background-color: black;
+  border: none;
+  border-bottom: 1px solid #6ca8ad;
+  outline: none;
+  color: #6ca8ad;
+  padding-left: 2%;
+  letter-spacing: 1px;
+  font-size: 1.2em;
+}
+
+.selectOptions > select {
+  width: 100%;
+  height: 45px;
+  margin: 8% 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #6ca8ad;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  padding-left: 2%;
+  font-size: 1.2em;
+  border: 0.5px solid #6ca8ad;
+}
+.selectOptions > select > option {
+  background-color: #6ca8ad;
+  color: black;
+}
+
+.btnSignUp {
+  width: 100%;
+  height: 50px;
+  background-color: #6ca8ad;
+  border: none;
+  cursor: pointer;
+  color: black;
+  font-size: 1.6em;
+  border-radius: 15px;
+}
+.btnSignUp:hover {
+  background-color: #5d8285;
+  font-weight: bolder;
+}
+
+input::placeholder {
+  font-weight: bold;
+  font-size: 1em;
+  color: #6ca8ad;
+}
+
+.eye {
+  color: #5d8285;
+  font-size: 1.2em;
+  position: absolute;
+  right: 3%;
+  top: 35%;
+}
+#allInputspassword {
+  position: relative;
+}
+#allInputspasswordLogin {
+  position: relative;
+}
+
+/* socialIcons */
+
+.socialSections {
+  width: 60%;
+  margin: 7% auto;
+  /* border: 1px solid white; */
+}
+.socialSections > p {
+  color: white;
+  text-align: center;
+}
+.socialSections > p:hover {
+  color: #67b0b7;
+}
+.socialIcons {
+  width: 50%;
+  margin: 7% auto;
+  display: flex;
+  justify-content: space-evenly;
+}
+.socialIcons > div {
+  color: white;
+  font-size: 2em;
+}
+.socialIcons > div:hover {
+  color: #6ca8ad;
+  cursor: pointer;
+  transform: skewY(20deg);
+}

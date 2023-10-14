@@ -1,0 +1,109 @@
+.blogContainer {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-image: url("https://images.unsplash.com/photo-1506606401543-2e73709cebb4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+}
+
+.addBlogSection {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  color: black;
+  /* background-color: red; */
+}
+
+.adddBlogInputContainer {
+  width: 60%;
+  height: 90%;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  margin-left: 15%;
+  border-radius: 15px;
+}
+
+.allBlogInputContainer {
+  margin: 0.5% auto;
+  width: 90%;
+}
+
+.allBlogInputContainer > label {
+  color: white;
+}
+.allBlogInputContainer > input {
+  width: 100%;
+  height: 35px;
+  border-radius: 5px;
+  padding-left: 2%;
+  outline: none;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid grey;
+  color: white;
+}
+.submitBtn {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  padding-left: 2%;
+  color: white;
+  background-color: transparent;
+  border: 1px solid white;
+  cursor: pointer;
+  font-size: 0.7em;
+}
+.submitBtn:hover {
+  color: black;
+  background-color: grey;
+  border: 1px solid grey;
+  cursor: pointer;
+  font-weight: bolder;
+}
+
+.allBlogInputContainer > select {
+  width: 100%;
+  height: 35px;
+  padding-left: 2%;
+  border: none;
+  outline: none;
+  margin-top: 1%;
+  color: #6dacb2;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding-top: 1%;
+  background-color: transparent;
+  border-bottom: 1px solid grey;
+}
+
+.allBlogInputContainer > select > option {
+  background-color: black;
+  color: white;
+}
+
+.allBlogInputContainer > textarea {
+  background-color: transparent;
+  width: 100%;
+  padding-left: 2%;
+  border: none;
+  border: 1px solid grey;
+  outline: none;
+  margin-top: 1%;
+  color: white;
+}
+
+textarea::placeholder {
+  color: #6dacb2;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding-top: 1%;
+}

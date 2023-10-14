@@ -1,0 +1,46 @@
+.homeContainer {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-image: url("https://images.unsplash.com/photo-1619943416088-88f7e2b6a887?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1828&q=80");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.9;
+}
+
+/* main body */
+
+.mainHomeBody {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2em;
+  color: white;
+  position: relative;
+  /* background-color: red; */
+}
+.mainHomeBody > h1 {
+  position: absolute;
+  animation: welcome 1.5s ease-in;
+  animation-direction: normal;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  letter-spacing: 2px;
+}
+
+@keyframes welcome {
+  0% {
+    opacity: 0.3;
+    color: aqua;
+    top: 210px;
+  }
+
+  100% {
+    color: white;
+    top: 320px;
+  }
+}
