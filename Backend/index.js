@@ -3,8 +3,14 @@ import cors from "cors";
 import morgan from "morgan";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import { currentuser, login, register } from "./Controllers/UserController.js";
-import { admin, every } from "./MiddleWares/AllMiddleWares.js";
+import {
+  bookmarks,
+  currentuser,
+  like,
+  login,
+  register,
+} from "./Controllers/UserController.js";
+import { admin, every, user } from "./MiddleWares/AllMiddleWares.js";
 import {
   addBlog,
   allBlogs,
@@ -36,8 +42,10 @@ app.post("/editblog", admin, editBlog);
 app.post("/updateblog", admin, updateBlog);
 app.post("/deleteblog", admin, deleteBlog);
 
-// comment controller
+// comment/like/save controller
 app.post("/addcomment", every, addComment);
+app.post("/addlike", user, like);
+app.post("/addbookmarks", user, bookmarks);
 
 const PORT = 8000;
 

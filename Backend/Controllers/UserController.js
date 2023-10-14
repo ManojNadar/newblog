@@ -1,6 +1,7 @@
 import User from "../Models/UserModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import Blog from "../Models/BlogModel.js";
 
 // Register
 
@@ -136,6 +137,138 @@ export const currentuser = async (req, res) => {
     }
 
     return res.status(404).json({ success: false, message: "user not found" });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const like = async (req, res) => {
+  try {
+    const { id, token } = req.body;
+
+    if (!token || !id) {
+      return res.status(404).json({
+        success: false,
+        message: "id and token is required",
+      });
+    }
+
+    const decodeToken = jwt.verify(token, process.env.SECRET_KEY);
+
+    if (!decodeToken) {
+      return res.status(404).json({
+        success: false,
+        message: "token is not valid",
+      });
+    }
+
+    const userId = decodeToken?.userId;
+
+    const blog = await Blog.findById(id);
+
+    if (blog) {
+      if (blog?.likes) {
+        let flag = false;
+
+        for (let i = 0; i < blog?.likes.length; i++) {
+          if (blog?.likes[i].includes(userId)) {
+            flag = true;
+          }
+        }
+
+        if (!flag) {
+          blog?.likes.push(userId);
+          await blog.save();
+          return res.status(200).json({
+            success: true,
+            message: "Liked",
+          });
+        }
+
+        const filterBlogLikes = blog?.likes?.filter((e) => e != userId);
+
+        blog.likes = filterBlogLikes;
+        await blog.save();
+        return res.status(200).json({
+          success: true,
+          message: "UnLiked",
+        });
+      }
+    }
+
+    return res.status(404).json({
+      success: false,
+      message: "blog not found",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const bookmarks = async (req, res) => {
+  try {
+    const { id, token } = req.body;
+
+    if (!token || !id) {
+      return res.status(404).json({
+        success: false,
+        message: "id and token is required",
+      });
+    }
+
+    const decodeToken = jwt.verify(token, process.env.SECRET_KEY);
+
+    if (!decodeToken) {
+      return res.status(404).json({
+        success: false,
+        message: "token is not valid",
+      });
+    }
+
+    const userId = decodeToken?.userId;
+
+    const user = await User.findById(userId);
+
+    if (user) {
+      if (user?.bookmarks) {
+        let flag = false;
+
+        for (let i = 0; i < user?.bookmarks.length; i++) {
+          if (user?.bookmarks[i].includes(id)) {
+            flag = true;
+          }
+        }
+
+        if (!flag) {
+          user?.bookmarks.push(id);
+          await user.save();
+          return res.status(200).json({
+            success: true,
+            message: "Saved",
+          });
+        }
+
+        const filterBlogUser = user?.bookmarks?.filter((e) => e != id);
+
+        user.bookmarks = filterBlogUser;
+        await user.save();
+        return res.status(200).json({
+          success: false,
+          message: "Removed from Bookmark",
+        });
+      }
+    }
+
+    return res.status(404).json({
+      success: false,
+      message: "blog not found",
+    });
   } catch (error) {
     return res.status(500).json({
       success: false,

@@ -17,6 +17,9 @@ const userSchema = new Schema({
     type: String,
     enum: ["Admin", "User"],
   },
+  bookmarks: {
+    type: [String],
+  },
 });
 
 export default mongoose.model("Users", userSchema);

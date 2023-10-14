@@ -27,15 +27,14 @@ const Navbar = () => {
             <h2 onClick={() => route("/")}>Home</h2>
             <h2 onClick={() => route("/allblogs")}>ALL TRAVEL BLOGS</h2>
 
-            {state?.currentuser?.role == "Admin" ? (
+            {state?.currentuser?.role === "Admin" ? (
               <NavLink to="/addblog" className="innerDropDownContainer">
                 <h2>CREATE BLOG</h2>
               </NavLink>
             ) : null}
-            {state?.currentuser?.role == "User" ? (
+            {state?.currentuser?.role === "User" ? (
               <div className="innerDropDownContainer">
-                <h2>SAVED BLOGS</h2>
-                <h2>LIKED BLOGS</h2>
+                <h2>YOUR BOOKMARKS</h2>
                 <h2>ABOUT US</h2>
                 <h2>CONTACT US</h2>
                 <h2>FEEDBACK</h2>

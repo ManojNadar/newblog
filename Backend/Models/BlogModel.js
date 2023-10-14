@@ -25,6 +25,9 @@ const blogSchema = new Schema(
     comments: {
       type: [Object],
     },
+    likes: {
+      type: [String],
+    },
   }
   // { timestamps: true }
 );

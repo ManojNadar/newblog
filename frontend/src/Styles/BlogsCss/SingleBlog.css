@@ -67,20 +67,30 @@
 .heartSaveIcons {
   position: absolute;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
-  right: 0;
+  right: 2%;
   top: 2%;
   /* border: 1px solid red; */
   width: 10%;
 }
 .heart {
-  font-size: 2em;
+  font-size: 2.3em;
   color: white;
+  width: 5%;
 }
 .save {
-  font-size: 1.7em;
+  font-size: 2em;
   color: white;
+  width: 5%;
+}
+.heart:hover {
+  color: red;
+  cursor: pointer;
+}
+.save:hover {
+  cursor: pointer;
+  color: blue;
 }
 
 .date {

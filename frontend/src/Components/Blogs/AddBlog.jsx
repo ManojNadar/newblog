@@ -55,7 +55,7 @@ const AddBlog = () => {
 
   useEffect(() => {
     if (state) {
-      if (state?.currentuser?.role != "Admin") {
+      if (state?.currentuser?.role !== "Admin") {
         route("/");
       }
     }

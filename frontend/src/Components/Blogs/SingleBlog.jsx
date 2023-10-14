@@ -112,6 +112,38 @@ const SingleBlog = () => {
       console.log(error);
     }
   };
+
+  const likeBlog = async (id) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("blogtoken"));
+
+      const response = await api.post("/addlike", { token, id });
+
+      if (response.data.success) {
+        toast.success(response.data.message);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const bookmarks = async (id) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("blogtoken"));
+
+      const response = await api.post("/addbookmarks", { token, id });
+
+      if (response.data.success) {
+        toast.success(response.data.message);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <div className="singleBlogContainer">
@@ -172,7 +204,7 @@ const SingleBlog = () => {
             </div>
           ) : null}
           <div className="singleBlogPage">
-            {state?.currentuser?.role == "Admin" && (
+            {state?.currentuser?.role === "Admin" && (
               <div className="editDelete">
                 <div className="edit" onClick={() => editBlog(singleBlog._id)}>
                   <FiEdit />
@@ -185,12 +217,12 @@ const SingleBlog = () => {
                 </div>
               </div>
             )}
-            {state?.currentuser?.role == "User" && (
+            {state?.currentuser?.role === "User" && (
               <div className="heartSaveIcons">
-                <div className="heart">
+                <div className="heart" onClick={() => likeBlog(singleBlog._id)}>
                   <AiFillHeart />
                 </div>
-                <div className="save">
+                <div className="save" onClick={() => bookmarks(singleBlog._id)}>
                   <BsFillBookmarkFill />
                 </div>
               </div>
