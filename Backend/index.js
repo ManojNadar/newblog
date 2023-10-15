@@ -6,6 +6,8 @@ import dotenv from "dotenv";
 import {
   bookmarks,
   currentuser,
+  deleteBookmark,
+  getBookmarks,
   like,
   login,
   register,
@@ -16,6 +18,7 @@ import {
   allBlogs,
   deleteBlog,
   editBlog,
+  searchBlog,
   singleBlog,
   updateBlog,
 } from "./Controllers/BlogController.js";
@@ -41,11 +44,14 @@ app.post("/singleblog", singleBlog);
 app.post("/editblog", admin, editBlog);
 app.post("/updateblog", admin, updateBlog);
 app.post("/deleteblog", admin, deleteBlog);
+app.post("/searchblog", searchBlog);
 
 // comment/like/save controller
 app.post("/addcomment", every, addComment);
 app.post("/addlike", user, like);
 app.post("/addbookmarks", user, bookmarks);
+app.post("/getbookmarks", user, getBookmarks);
+app.post("/deletebookmark", user, deleteBookmark);
 
 const PORT = 8000;
 

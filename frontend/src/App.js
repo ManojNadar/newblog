@@ -8,6 +8,7 @@ import Login from "./Components/Login";
 import AllBlogs from "./Components/Blogs/AllBlogs";
 import AddBlog from "./Components/Blogs/AddBlog";
 import SingleBlog from "./Components/Blogs/SingleBlog";
+import Bookmarks from "./Components/Bookmarks";
 
 function App() {
   const { state } = useContext(MyContext);
@@ -21,6 +22,7 @@ function App() {
         <Route exact path="/allblogs" element={<AllBlogs />} />
         <Route exact path="/addblog" element={<AddBlog />} />
         <Route exact path="/singleblog/:id" element={<SingleBlog />} />
+        <Route exact path="/getbookmarks" element={<Bookmarks />} />
       </Routes>
     </>
   );

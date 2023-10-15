@@ -7,7 +7,22 @@ import { useNavigate } from "react-router-dom";
 
 const AllBlogs = () => {
   const [allBlogs, setAllBlogs] = useState([]);
+  // const [search, setSearch] = useState("");
   const route = useNavigate();
+
+  // const handleSearch = async (e) => {
+  //   setSearch(e.target.value);
+
+  //   try {
+  //     const response = await api.post("/searchblog", { search });
+
+  //     if (response.data.success) {
+  //       setAllBlogs(response.data.searchBlogs);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   // console.log(allBlogs);
   useEffect(() => {
@@ -53,6 +68,14 @@ const AllBlogs = () => {
         const filterBlogs = data.filter((blog) => blog.categories == "Roads");
 
         setAllBlogs(filterBlogs);
+      } else if (value == "Beaches") {
+        const filterBlogs = data.filter((blog) => blog.categories == "Beaches");
+
+        setAllBlogs(filterBlogs);
+      } else if (value == "Camping") {
+        const filterBlogs = data.filter((blog) => blog.categories == "Camping");
+
+        setAllBlogs(filterBlogs);
       } else {
         setAllBlogs(data);
       }
@@ -71,7 +94,7 @@ const AllBlogs = () => {
               <div className="searchBlogIcon">
                 <AiOutlineSearch />
               </div>
-              <input type="text" placeholder="Search" />
+              <input type="text" placeholder="Search" name="search" />
             </div>
             <div>
               <select onChange={filterCatergory}>
@@ -80,6 +103,8 @@ const AllBlogs = () => {
                 <option value="Waterfalls">Waterfalls</option>
                 <option value="hills">Hill stations</option>
                 <option value="Roads">Roads</option>
+                <option value="Beaches">Beaches</option>
+                <option value="Camping">Camping</option>
               </select>
             </div>
           </div>

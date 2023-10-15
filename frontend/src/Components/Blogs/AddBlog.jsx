@@ -99,6 +99,8 @@ const AddBlog = () => {
                 <option value="Waterfalls">Waterfalls</option>
                 <option value="hills">Hill stations</option>
                 <option value="Roads">Roads</option>
+                <option value="Beaches">Beaches</option>
+                <option value="Camping">Camping</option>
               </select>
             </div>
             <div className="allBlogInputContainer">

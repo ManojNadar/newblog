@@ -7,7 +7,7 @@ export const Home = () => {
       <div className="homeContainer">
         <Navbar />
         <div className="mainHomeBody">
-          <h1>WELCOME TO WORLD TOURISM</h1>
+          <h2>WELCOME TO WORLD NATURE TOURISM</h2>
         </div>
       </div>
     </>

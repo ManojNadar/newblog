@@ -281,3 +281,98 @@ export const bookmarks = async (req, res) => {
     });
   }
 };
+
+export const getBookmarks = async (req, res) => {
+  try {
+    const { token } = req.body;
+
+    console.log(token);
+    if (!token) {
+      return res.status(404).json({
+        success: false,
+        message: "token is required",
+      });
+    }
+
+    const decodeToken = jwt.verify(token, process.env.SECRET_KEY);
+
+    const userId = decodeToken?.userId;
+
+    const user = await User.findById(userId);
+
+    if (user) {
+      let finalBlog = [];
+      for (let i = 0; i < user.bookmarks.length; i++) {
+        const findBlog = await Blog.findById(user.bookmarks[i]);
+
+        if (findBlog) {
+          finalBlog.push(findBlog);
+        }
+      }
+
+      return res.status(200).json({
+        success: true,
+        bookmarks: finalBlog,
+      });
+    }
+
+    return res.status(404).json({
+      success: true,
+      message: "user not found",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const deleteBookmark = async (req, res) => {
+  try {
+    const { id, token } = req.body;
+
+    if (!id || !token) {
+      return res.status(404).json({
+        success: false,
+        message: "id and token is required",
+      });
+    }
+
+    const decodeToken = jwt.verify(token, process.env.SECRET_KEY);
+
+    const userId = decodeToken?.userId;
+
+    const user = await User.findById(userId);
+
+    if (user) {
+      const filterBookmark = user?.bookmarks.filter((e) => e != id);
+      user.bookmarks = filterBookmark;
+      await user.save();
+
+      const updateUser = await User.findById(userId);
+
+      if (updateUser) {
+        let finalBlog = [];
+        for (let i = 0; i < user.bookmarks.length; i++) {
+          const findBlog = await Blog.findById(user.bookmarks[i]);
+
+          if (findBlog) {
+            finalBlog.push(findBlog);
+          }
+        }
+
+        return res.status(200).json({
+          success: true,
+          message: "Removed from Bookmarks",
+          updatedBookmarks: finalBlog,
+        });
+      }
+    }
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};

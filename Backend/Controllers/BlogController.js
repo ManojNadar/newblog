@@ -39,19 +39,6 @@ export const addBlog = async (req, res) => {
 
 export const allBlogs = async (req, res) => {
   try {
-    // const { page, limit = 3 } = req.body;
-
-    // const skipVal = parseInt((page - 1) * limit);
-    // const limitVal = limit;
-    // const all = await Blog.find({}).skip(skipVal).limit(limitVal).lean();
-
-    // if (all?.length) {
-    //   return res.status(200).json({
-    //     success: true,
-    //     allBlogs: all,
-    //   });
-    // }
-
     const all = await Blog.find({});
 
     if (all?.length) {
@@ -202,6 +189,34 @@ export const deleteBlog = async (req, res) => {
     message: "could not delete blog",
   });
   try {
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const searchBlog = async (req, res) => {
+  try {
+    const { search } = req.body;
+
+    const query = {
+      search: { $regex: search, $option: "i" },
+    };
+    const all = await Blog.find(query).lean();
+
+    if (all?.length) {
+      return res.status(200).json({
+        success: true,
+        searchBlogs: all,
+      });
+    }
+
+    return res.status(404).json({
+      success: false,
+      message: "no blogs found",
+    });
   } catch (error) {
     return res.status(500).json({
       success: false,

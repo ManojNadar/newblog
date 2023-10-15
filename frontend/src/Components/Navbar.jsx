@@ -34,10 +34,9 @@ const Navbar = () => {
             ) : null}
             {state?.currentuser?.role === "User" ? (
               <div className="innerDropDownContainer">
-                <h2>YOUR BOOKMARKS</h2>
+                <h2 onClick={() => route("/getbookmarks")}>YOUR BOOKMARKS</h2>
                 <h2>ABOUT US</h2>
                 <h2>CONTACT US</h2>
-                <h2>FEEDBACK</h2>
               </div>
             ) : null}
           </div>
