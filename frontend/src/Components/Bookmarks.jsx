@@ -1,14 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import api from "./ApiConfig";
 import Navbar from "./Navbar";
 import "../Styles/Bookmarks.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { MyContext } from "./Context/BlogContext";
 
 const Bookmarks = () => {
   const [bookmarks, setBookmarks] = useState([]);
   const route = useNavigate();
+
+  const { state } = useContext(MyContext);
   //   console.log(bookmarks);
+
+  useEffect(() => {
+    if (!state?.currentuser) {
+      route("/");
+    }
+  }, [route, state?.currentuser]);
 
   useEffect(() => {
     async function getBookmarks() {
