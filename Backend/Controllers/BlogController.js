@@ -4,7 +4,9 @@ import Blog from "../Models/BlogModel.js";
 
 export const addBlog = async (req, res) => {
   try {
-    const { title, image, description, categories } = req.body.detail;
+    const { title, image, categories } = req.body.detail;
+
+    const { description } = req.body;
 
     // console.log(title, image, description, categories);
 

@@ -7,7 +7,7 @@ import { toast } from "react-hot-toast";
 import api from "../ApiConfig";
 
 import { Editor } from "@tinymce/tinymce-react";
-import parse from "html-react-parser";
+// import parse from "html-react-parser";
 
 const AddBlog = () => {
   const [detail, setDetail] = useState({
@@ -17,7 +17,7 @@ const AddBlog = () => {
   });
 
   const [description, setDescription] = useState("");
-  console.log(parse(description), "description");
+  console.log(description, "description");
 
   console.log(detail);
   // const { state } = useContext(MyContext);
@@ -43,6 +43,7 @@ const AddBlog = () => {
         const response = await api.post("/addblog", {
           detail,
           token,
+          description,
         });
 
         if (response.data.success) {
@@ -72,6 +73,8 @@ const AddBlog = () => {
   //     }
   //   }
   // }, [state?.currentuser, route]);
+
+  let body = description;
   return (
     <>
       <div className="blogContainer">
@@ -133,7 +136,7 @@ const AddBlog = () => {
                   height: 400,
                 }}
                 initialValue="<h3>Enter Description</h3>"
-                onEditorChange={(newValue, editor) => setDescription(newValue)}
+                onEditorChange={(newValue) => setDescription(newValue)}
                 value={description}
               />
             </div>
