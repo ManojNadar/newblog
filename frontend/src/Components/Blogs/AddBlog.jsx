@@ -1,26 +1,35 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import "../../Styles/BlogsCss/CreateBlog.css";
 import { useNavigate } from "react-router-dom";
-import { MyContext } from "../Context/BlogContext";
+// import { MyContext } from "../Context/BlogContext";
 import Navbar from "../Navbar";
 import { toast } from "react-hot-toast";
 import api from "../ApiConfig";
+
+import { Editor } from "@tinymce/tinymce-react";
+import parse from "html-react-parser";
 
 const AddBlog = () => {
   const [detail, setDetail] = useState({
     title: "",
     image: "",
-    description: "",
     categories: "",
   });
 
-  //   console.log(detail);
-  const { state } = useContext(MyContext);
+  const [description, setDescription] = useState("");
+  console.log(parse(description), "description");
+
+  console.log(detail);
+  // const { state } = useContext(MyContext);
   const route = useNavigate();
 
   const handleChange = (e) => {
     const { value, name } = e.target;
-    setDetail({ ...detail, [name]: value });
+
+    setDetail({
+      ...detail,
+      [name]: value,
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -31,7 +40,10 @@ const AddBlog = () => {
       //   console.log(title, image, description, categories);
       const token = JSON.parse(localStorage.getItem("blogtoken"));
       try {
-        const response = await api.post("/addblog", { detail, token });
+        const response = await api.post("/addblog", {
+          detail,
+          token,
+        });
 
         if (response.data.success) {
           toast.success(response.data.message);
@@ -53,13 +65,13 @@ const AddBlog = () => {
     }
   };
 
-  useEffect(() => {
-    if (state) {
-      if (state?.currentuser?.role !== "Admin") {
-        route("/");
-      }
-    }
-  }, [state?.currentuser, route]);
+  // useEffect(() => {
+  //   if (state) {
+  //     if (state?.currentuser?.role !== "Admin") {
+  //       route("/");
+  //     }
+  //   }
+  // }, [state?.currentuser, route]);
   return (
     <>
       <div className="blogContainer">
@@ -104,7 +116,7 @@ const AddBlog = () => {
               </select>
             </div>
             <div className="allBlogInputContainer">
-              <label htmlFor="">BLOG DESCRIPTION</label> <br />
+              {/* <label htmlFor="">BLOG DESCRIPTION</label> <br />
               <textarea
                 cols="30"
                 rows="9"
@@ -112,7 +124,18 @@ const AddBlog = () => {
                 onChange={handleChange}
                 value={detail.description}
                 name="description"
-              ></textarea>
+              ></textarea> */}
+
+              <Editor
+                init={{
+                  menubar: false,
+                  content_css: "dark",
+                  height: 400,
+                }}
+                initialValue="<h3>Enter Description</h3>"
+                onEditorChange={(newValue, editor) => setDescription(newValue)}
+                value={description}
+              />
             </div>
             <div className="allBlogInputContainer">
               <button className="submitBtn" type="submit">
