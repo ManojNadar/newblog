@@ -52,7 +52,7 @@ const Register = () => {
           toast.error(response.data.message);
         }
       } catch (error) {
-        toast.error(error.message);
+        toast.error(error.response.data.message);
       }
     } else {
       toast.error("All Fields are mandatory");
