@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import "../../Styles/BlogsCss/CreateBlog.css";
 import { useNavigate } from "react-router-dom";
-// import { MyContext } from "../Context/BlogContext";
+import { MyContext } from "../Context/BlogContext";
 import Navbar from "../Navbar";
 import { toast } from "react-hot-toast";
 import api from "../ApiConfig";
 
-import { Editor } from "@tinymce/tinymce-react";
+// import { Editor } from "@tinymce/tinymce-react";
 // import parse from "html-react-parser";
 
 const AddBlog = () => {
@@ -14,13 +14,14 @@ const AddBlog = () => {
     title: "",
     image: "",
     categories: "",
+    description: "",
   });
 
   const [description, setDescription] = useState("");
   console.log(description, "description");
 
   console.log(detail);
-  // const { state } = useContext(MyContext);
+  const { state } = useContext(MyContext);
   const route = useNavigate();
 
   const handleChange = (e) => {
@@ -43,7 +44,6 @@ const AddBlog = () => {
         const response = await api.post("/addblog", {
           detail,
           token,
-          description,
         });
 
         if (response.data.success) {
@@ -66,15 +66,14 @@ const AddBlog = () => {
     }
   };
 
-  // useEffect(() => {
-  //   if (state) {
-  //     if (state?.currentuser?.role !== "Admin") {
-  //       route("/");
-  //     }
-  //   }
-  // }, [state?.currentuser, route]);
+  useEffect(() => {
+    if (state) {
+      if (state?.currentuser?.role !== "Admin") {
+        route("/");
+      }
+    }
+  }, [state?.currentuser, route]);
 
-  let body = description;
   return (
     <>
       <div className="blogContainer">
@@ -119,26 +118,26 @@ const AddBlog = () => {
               </select>
             </div>
             <div className="allBlogInputContainer">
-              {/* <label htmlFor="">BLOG DESCRIPTION</label> <br />
+              <label>BLOG DESCRIPTION</label> <br />
               <textarea
                 cols="30"
-                rows="9"
+                rows="14"
                 placeholder="Enter Description"
                 onChange={handleChange}
                 value={detail.description}
                 name="description"
-              ></textarea> */}
-
+              ></textarea>
+              {/* 
               <Editor
                 init={{
                   menubar: false,
                   content_css: "dark",
                   height: 400,
                 }}
-                initialValue="<h3>Enter Description</h3>"
+                initialValue="<p>Enter Description</p>"
                 onEditorChange={(newValue) => setDescription(newValue)}
                 value={description}
-              />
+              /> */}
             </div>
             <div className="allBlogInputContainer">
               <button className="submitBtn" type="submit">

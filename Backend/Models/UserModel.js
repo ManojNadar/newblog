@@ -20,6 +20,10 @@ const userSchema = new Schema({
   bookmarks: {
     type: [String],
   },
+  isLiked: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 export default mongoose.model("Users", userSchema);

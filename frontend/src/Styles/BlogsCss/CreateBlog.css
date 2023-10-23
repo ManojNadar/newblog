@@ -8,7 +8,7 @@
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.9;
+  /* opacity: 0.9; */
 }
 
 .addBlogSection {
@@ -19,6 +19,7 @@
   align-items: center;
   font-size: 1.2em;
   color: black;
+  opacity: 0.8;
   /* background-color: red; */
 }
 
@@ -26,10 +27,11 @@
   overflow: scroll;
   width: 60%;
   height: 95%;
-  background-color: #2d343e;
+  background-color: #060606;
   position: fixed;
   margin-left: 15%;
   border-radius: 15px;
+  padding-top: 1%;
 }
 
 .allBlogInputContainer {
@@ -39,6 +41,8 @@
 
 .allBlogInputContainer > label {
   color: white;
+  font-weight: bolder;
+  letter-spacing: 1px;
 }
 .allBlogInputContainer > input {
   width: 100%;
@@ -51,6 +55,7 @@
   border: none;
   border-bottom: 1px solid grey;
   color: white;
+  margin: 1% 0;
 }
 .submitBtn {
   width: 100%;
@@ -98,7 +103,7 @@
   border: none;
   border: 1px solid grey;
   outline: none;
-  margin-top: 1%;
+  margin-top: 2%;
   color: white;
 }
 

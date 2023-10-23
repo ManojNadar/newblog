@@ -182,6 +182,7 @@ export const like = async (req, res) => {
         if (!flag) {
           blog?.likes.push(userId);
           await blog.save();
+
           return res.status(200).json({
             success: true,
             message: "Liked",
