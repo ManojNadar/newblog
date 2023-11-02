@@ -17,9 +17,6 @@ const AddBlog = () => {
     description: "",
   });
 
-  const [description, setDescription] = useState("");
-  console.log(description, "description");
-
   console.log(detail);
   const { state } = useContext(MyContext);
   const route = useNavigate();
